@@ -71,7 +71,7 @@ List<FoodItem> foodItems = [
       category: 'Ramens',
       price: 10.99,
       description: 'Ramen Sedap Mantap Hura Huraa Ugh Mak nyus',
-      imagePath: 'assets/images/list-6.png',
+      imagePath: 'assets/images/list-1.png',
       rating: 3.1,
       favorite: null),
   FoodItem(
@@ -79,7 +79,7 @@ List<FoodItem> foodItems = [
       category: 'Ramens',
       price: 10.99,
       description: 'Ramen Sedap Mantap Hura Huraa Ugh Mak nyus',
-      imagePath: 'assets/images/list-7.png',
+      imagePath: 'assets/images/list-2.png',
       rating: 4.7,
       favorite: null),
   FoodItem(
@@ -87,7 +87,7 @@ List<FoodItem> foodItems = [
       category: 'Ramens',
       price: 10.99,
       description: 'Ramen Sedap Mantap Hura Huraa Ugh Mak nyus',
-      imagePath: 'assets/images/list-8.png',
+      imagePath: 'assets/images/list-3.png',
       rating: 0.2,
       favorite: null),
   FoodItem(
@@ -95,7 +95,7 @@ List<FoodItem> foodItems = [
       category: 'Ramens',
       price: 10.99,
       description: 'Ramen Sedap Mantap Hura Huraa Ugh Mak nyus',
-      imagePath: 'assets/images/list-9.png',
+      imagePath: 'assets/images/list-4.png',
       rating: 4.9,
       favorite: null),
   FoodItem(
@@ -103,7 +103,7 @@ List<FoodItem> foodItems = [
       category: 'Ramens',
       price: 10.99,
       description: 'Ramen Sedap Mantap Hura Huraa Ugh Mak nyus',
-      imagePath: 'assets/images/list-10.png',
+      imagePath: 'assets/images/list-5.png',
       rating: 4.4,
       favorite: null),
 ];
