@@ -117,7 +117,7 @@ class _LandingScreenState extends State<LandingScreen> {
                     });
                   },
                 ),
-                const SizedBox(width: 10),
+                const SizedBox(width: 5),
                 FilterChip(
                   label: const Text('Noodles'),
                   selected: selectedCategory == 'Noodles',
@@ -127,7 +127,7 @@ class _LandingScreenState extends State<LandingScreen> {
                     });
                   },
                 ),
-                const SizedBox(width: 10),
+                const SizedBox(width: 5),
                 FilterChip(
                   label: const Text('Ramens'),
                   selected: selectedCategory == 'Ramens',
@@ -137,7 +137,7 @@ class _LandingScreenState extends State<LandingScreen> {
                     });
                   },
                 ),
-                const SizedBox(width: 10),
+                const SizedBox(width: 5),
                 FilterChip(
                   label: const Text('Sushi'),
                   selected: selectedCategory == 'Sushi',

@@ -14,9 +14,9 @@ List<RestaurantModel> restaurantItems = [
     picture: 'assets/images/header-2.png',
   ),
   RestaurantModel(
-    picture: 'assets/images/header-3.png',
+    picture: 'assets/images/header-1.png',
   ),
   RestaurantModel(
-    picture: 'assets/images/header-4.png',
+    picture: 'assets/images/header-2.png',
   ),
 ];
