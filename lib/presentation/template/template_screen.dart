@@ -1,22 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import 'profile_provider.dart';
+import 'template_provider.dart';
 
-class ProfileScreen extends StatefulWidget {
-  const ProfileScreen({super.key});
+class TemplateScreen extends StatefulWidget {
+  const TemplateScreen({super.key});
 
   @override
-  State<ProfileScreen> createState() => _ProfileScreenState();
+  State<TemplateScreen> createState() => _TemplateScreenState();
 }
 
-class _ProfileScreenState extends State<ProfileScreen> {
-  late ProfileProvider _provider;
+class _TemplateScreenState extends State<TemplateScreen> {
+  late TemplateProvider _provider;
 
   @override
   void initState() {
     super.initState();
-    _provider = ProfileProvider();
+    _provider = TemplateProvider();
   }
 
   @override
@@ -28,7 +28,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
   }
 
   Widget _buildPage(BuildContext context) {
-    return Consumer<ProfileProvider>(builder: (_, provider, __) {
+    return Consumer<TemplateProvider>(builder: (_, provider, __) {
       return const Scaffold();
     });
   }

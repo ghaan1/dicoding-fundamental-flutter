@@ -1,0 +1,5 @@
+class LandingState {
+  LandingState() {
+    // constructor
+  }
+}

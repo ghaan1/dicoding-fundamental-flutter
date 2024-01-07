@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:list_makanan/presentation/home/home_screen.dart';
+import 'package:list_makanan/presentation/home/navigation/navigation_screen.dart';
+import 'package:list_makanan/presentation/homev2/home_screen.dart';
 import 'package:list_makanan/util/app_color.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -15,7 +16,7 @@ class _SplashScreenState extends State<SplashScreen> {
     super.initState();
     Future.delayed(const Duration(seconds: 2), () {
       Navigator.pushReplacement(
-          context, MaterialPageRoute(builder: (context) => const HomeScreen()));
+          context, MaterialPageRoute(builder: (context) => const NavigationScreen()));
     });
   }
 

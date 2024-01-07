@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:list_makanan/presentation/home/landing/landing_screen.dart';
-import 'package:list_makanan/presentation/home/profile/profile_screen.dart';
+import 'package:list_makanan/presentation/homev2/landing/landing_screen.dart';
+import 'package:list_makanan/presentation/homev2/profile/profile_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
