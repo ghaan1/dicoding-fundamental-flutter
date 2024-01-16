@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:list_makanan/presentation/home/landing/landing_provider.dart';
+import 'package:list_makanan/presentation/home/landing/widget/list_food_card.dart';
+import 'package:list_makanan/presentation/home/landing/widget/picture_header_card.dart';
 import 'package:list_makanan/util/app_color.dart';
 import 'package:provider/provider.dart';
-
-import 'landing_provider.dart';
 
 class LandingScreen extends StatefulWidget {
   const LandingScreen({super.key});
@@ -18,6 +19,7 @@ class _LandingScreenState extends State<LandingScreen> {
   void initState() {
     super.initState();
     _provider = LandingProvider();
+    _provider.getListProjects();
   }
 
   @override
@@ -60,14 +62,14 @@ class _LandingScreenState extends State<LandingScreen> {
                         spreadRadius: 0,
                         color: AppColor.secondaryBackground),
                   ]),
-                  child: TextField(
+                  child: const TextField(
                     // controller: test,
                     // onChanged: (value) {
                     //   setState(() {
                     //     searchQuery = value;
                     //   });
                     // },
-                    decoration: const InputDecoration(
+                    decoration: InputDecoration(
                       prefixIcon: Icon(
                         Icons.search,
                         color: AppColor.primaryColor,
@@ -98,128 +100,66 @@ class _LandingScreenState extends State<LandingScreen> {
                 height: 195,
                 child: ListView.builder(
                   scrollDirection: Axis.horizontal,
-                  // itemCount: restaurantItems.length,
+                  itemCount: provider.state.restaurants.length,
                   itemBuilder: (context, index) {
-                    //   return PictureHeaderCard(
-                    //       restaurantModel: restaurantItems[index]);
+                    var restaurantItems = provider.state.restaurants;
+                    return PictureHeaderCard(
+                        restaurantModel: restaurantItems[index]);
                   },
                 ),
               ),
-              // Row(
-              //   children: [
-              //     FilterChip(
-              //       label: const Text('All'),
-              //       selected: selectedCategory == 'All',
-              //       onSelected: (isSelected) {
-              //         setState(() {
-              //           selectedCategory = 'All';
-              //         });
-              //       },
-              //     ),
-              //     const SizedBox(width: 5),
-              //     FilterChip(
-              //       label: const Text('Noodles'),
-              //       selected: selectedCategory == 'Noodles',
-              //       onSelected: (isSelected) {
-              //         setState(() {
-              //           selectedCategory = 'Noodles';
-              //         });
-              //       },
-              //     ),
-              //     const SizedBox(width: 5),
-              //     FilterChip(
-              //       label: const Text('Ramens'),
-              //       selected: selectedCategory == 'Ramens',
-              //       onSelected: (isSelected) {
-              //         setState(() {
-              //           selectedCategory = 'Ramens';
-              //         });
-              //       },
-              //     ),
-              //     const SizedBox(width: 5),
-              //     FilterChip(
-              //       label: const Text('Sushi'),
-              //       selected: selectedCategory == 'Sushi',
-              //       onSelected: (isSelected) {
-              //         setState(() {
-              //           selectedCategory = 'Sushi';
-              //         });
-              //       },
-              //     ),
-              //   ],
-              // ),
-              // Container(
-              //   margin: const EdgeInsets.only(top: 16, bottom: 16),
-              //   height: 230,
-              //   child: (filteredFoodItems.isEmpty)
-              //       ? Center(
-              //           child: Column(
-              //             mainAxisAlignment: MainAxisAlignment.center,
-              //             children: [
-              //               Image.asset(
-              //                 'assets/images/img-no-data.png',
-              //                 width: 200,
-              //                 height: 200,
-              //               ),
-              //               const Text('No Data'),
-              //             ],
-              //           ),
-              //         )
-              //       : ListView.builder(
-              //           scrollDirection: Axis.horizontal,
-              //           itemCount: filteredFoodItems.length,
-              //           itemBuilder: (context, index) {
-              //             return ListFoodCard(
-              //               foodItem: filteredFoodItems[index],
-              //               refreshParent: () => setState(() {}),
-              //             );
-              //           },
-              //         ),
-              // ),
-              // const Row(
-              //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              //   children: [
-              //     Text(
-              //       'Most Popular',
-              //       style: TextStyle(
-              //         color: Color(0xFF302F2C),
-              //         fontSize: 16,
-              //         fontFamily: 'Poppins',
-              //         fontWeight: FontWeight.w600,
-              //         height: 0,
-              //         letterSpacing: 1,
-              //       ),
-              //     ),
-              //   ],
-              // ),
-              // Container(
-              //   margin: const EdgeInsets.only(top: 16, bottom: 16),
-              //   height: 230,
-              //   child: (favoriteFoods.isEmpty)
-              //       ? Center(
-              //           child: Column(
-              //             mainAxisAlignment: MainAxisAlignment.center,
-              //             children: [
-              //               Image.asset(
-              //                 'assets/images/img-no-data.png',
-              //                 width: 200,
-              //                 height: 200,
-              //               ),
-              //               const Text('No Data'),
-              //             ],
-              //           ),
-              //         )
-              //       : ListView.builder(
-              //           scrollDirection: Axis.horizontal,
-              //           itemCount: favoriteFoods.length,
-              //           itemBuilder: (context, index) {
-              //             return PopularFoodCard(
-              //               foodItem: favoriteFoods[index],
-              //               refreshParent: () => setState(() {}),
-              //             );
-              //           },
-              //         ),
-              // ),
+              const Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    'Most Popular',
+                    style: TextStyle(
+                      color: Color(0xFF302F2C),
+                      fontSize: 16,
+                      fontFamily: 'Poppins',
+                      fontWeight: FontWeight.w600,
+                      height: 0,
+                      letterSpacing: 1,
+                    ),
+                  ),
+                ],
+              ),
+              Container(
+                margin: const EdgeInsets.fromLTRB(0, 16, 0, 16),
+                height: 450,
+                width: double.infinity,
+                child: (provider.state.restaurants.isEmpty)
+                    ? Center(
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Image.asset(
+                              'assets/images/img-no-data.png',
+                              width: 200,
+                              height: 200,
+                            ),
+                            const Text('No Data'),
+                          ],
+                        ),
+                      )
+                    : GridView.builder(
+                        scrollDirection: Axis.vertical,
+                        gridDelegate:
+                            const SliverGridDelegateWithMaxCrossAxisExtent(
+                                maxCrossAxisExtent: 200,
+                                childAspectRatio: 2 / 2,
+                                crossAxisSpacing: 0,
+                                mainAxisSpacing: 0),
+                        itemCount: provider.state.restaurants.length,
+                        itemBuilder: (context, index) {
+                          var restaurantItems = provider.state.restaurants;
+                          return ListFoodCard(
+                            restaurantItems: restaurantItems[index],
+                            refreshParent: () => setState(() {}),
+                          );
+                        },
+                      ),
+              ),
             ],
           ),
         )),

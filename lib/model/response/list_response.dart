@@ -1,15 +1,27 @@
 class ListResponse<T> {
-  final List<T> items;
-  final String message;
-  final int count;
+  int? count;
+  String? message;
+  List<T>? data;
 
-  ListResponse({required this.items, required this.message, required this.count});
+  ListResponse({this.count, this.message, this.data});
 
-  factory ListResponse.fromJson(Map<String, dynamic> json, T Function(dynamic) fromJson) {
+  factory ListResponse.fromJson(
+    Map<String, dynamic> json,
+    Function(Map<String, dynamic>) create,
+  ) {
+    var data = <T>[];
+    json['restaurants'].forEach((v) {
+      data.add(create(v));
+    });
+
+    // json['restaurants'].forEach((v) {
+    //   data.add(create(v));
+    // });
+    print(data);
     return ListResponse<T>(
-      items: (json['restaurants'] as List).map((itemJson) => fromJson(itemJson)).toList(),
-      message: json['message'],
-      count: json['count'],
+      count: json["count"],
+      message: json["message"],
+      data: data,
     );
   }
 }

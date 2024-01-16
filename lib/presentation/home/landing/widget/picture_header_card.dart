@@ -13,9 +13,8 @@ class PictureHeaderCard extends StatelessWidget {
     return Container(
       margin: const EdgeInsets.only(right: 10),
       width: 300,
-      child: Image.asset(
-        'https://restaurant-api.dicoding.dev/images/small/'
-        '${restaurantModel.pictureId}',
+      child: Image.network(
+        'https://restaurant-api.dicoding.dev/images/small/${restaurantModel.pictureId}',
         fit: BoxFit.fill,
       ),
     );

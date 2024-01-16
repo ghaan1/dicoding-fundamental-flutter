@@ -1,16 +1,16 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import 'package:list_makanan/model/food/food_model.dart';
+import 'package:list_makanan/model/restaurant/restauran_model.dart';
 import 'package:list_makanan/presentation/homev2/landing/widget/detail_food_card.dart';
 
 class ListFoodCard extends StatelessWidget {
-  final FoodItem foodItem;
+  final RestaurantModel restaurantItems;
   final Function refreshParent;
 
   const ListFoodCard({
     Key? key,
-    required this.foodItem,
+    required this.restaurantItems,
     required this.refreshParent,
   }) : super(key: key);
 
@@ -21,48 +21,54 @@ class ListFoodCard extends StatelessWidget {
         Navigator.push(
           context,
           CupertinoPageRoute(
-            builder: (context) => DetailFoodScreen(foodItem: foodItem),
+            builder: (context) =>
+                DetailFoodScreen(restaurantItems: restaurantItems),
           ),
         ).then((_) {
           refreshParent();
         });
       },
       child: Container(
-        margin: const EdgeInsets.only(right: 10),
+        margin: const EdgeInsets.only(right: 10, bottom: 0),
         width: 150,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Container(
-              margin: const EdgeInsets.only(bottom: 8),
-              height: 150,
-              width: 150,
-              child: Image.asset(
-                foodItem.imagePath,
-                fit: BoxFit.fitWidth,
+            Center(
+              child: SizedBox(
+                height: 150,
+                width: 150,
+                child: Image.network(
+                  'https://restaurant-api.dicoding.dev/images/small/${restaurantItems.pictureId}',
+                  fit: BoxFit.fitWidth,
+                ),
               ),
             ),
-            Text(
-              foodItem.name,
-              style: const TextStyle(
-                color: Color(0xFF302F2C),
-                fontSize: 14,
-                fontFamily: 'Poppins',
-                fontWeight: FontWeight.w500,
-                height: 0,
-                letterSpacing: 1,
+            Center(
+              child: Text(
+                '${restaurantItems.name}',
+                style: const TextStyle(
+                  color: Color(0xFF302F2C),
+                  fontSize: 14,
+                  fontFamily: 'Poppins',
+                  fontWeight: FontWeight.w500,
+                  height: 0,
+                  letterSpacing: 1,
+                ),
               ),
             ),
-            const SizedBox(height: 7),
-            Text(
-              '\$${foodItem.price}',
-              style: const TextStyle(
-                color: Color(0xFFFFC532),
-                fontSize: 18,
-                fontFamily: 'Poppins',
-                fontWeight: FontWeight.w600,
-                height: 0,
-                letterSpacing: 1,
+            // const SizedBox(height: 1),
+            Center(
+              child: Text(
+                '${restaurantItems.city}',
+                style: const TextStyle(
+                  color: Color(0xFFFFC532),
+                  fontSize: 18,
+                  fontFamily: 'Poppins',
+                  fontWeight: FontWeight.w600,
+                  height: 0,
+                  letterSpacing: 1,
+                ),
               ),
             ),
           ],

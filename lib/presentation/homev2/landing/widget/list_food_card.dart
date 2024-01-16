@@ -18,14 +18,14 @@ class ListFoodCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        Navigator.push(
-          context,
-          CupertinoPageRoute(
-            builder: (context) => DetailFoodScreen(foodItem: foodItem),
-          ),
-        ).then((_) {
-          refreshParent();
-        });
+        // Navigator.push(
+        //   context,
+        //   CupertinoPageRoute(
+        //     builder: (context) => DetailFoodScreen(foodItem: foodItem),
+        //   ),
+        // ).then((_) {
+        //   refreshParent();
+        // });
       },
       child: Container(
         margin: const EdgeInsets.only(right: 10),
